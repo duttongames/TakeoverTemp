@@ -9,6 +9,9 @@ Shader "Custom/Basic"
         Tags {"RenderType"="Opaque"}
         LOD 100
 
+        // A BASIC PASS FOR THE SHADER
+        // INCLUDES VERTEXT AND FRAGMENT DATA TO INSINUATE HOW LIGHT BOUNCES OFF
+        // THE OBJECTS.
         Pass
         {
             #pragma vertex VERT;
