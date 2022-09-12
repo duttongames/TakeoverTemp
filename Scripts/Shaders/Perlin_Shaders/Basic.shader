@@ -1,3 +1,6 @@
+// THIS SCRIPT WAS FOR DEBUGGING PURPOSES
+// DO NOT USE!
+
 Shader "Unlit/Basic"
 {
     Properties
