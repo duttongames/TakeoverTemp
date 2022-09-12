@@ -39,6 +39,10 @@ Shader "Custom/Basic"
                 return O;
             }
 
+            // THE FRAGMENT OF THE MAT PROVIDES THE DIFFUSE
+            // FOR BASIC DEMONSTRATION, THIS WILL RETURN A WHITE COLOUR
+            // IN ACCORDANCE WITH RGBA
+
             fixed4 FRAG (VECTOR2_FLOAT i) : SV_TARGET
             {
                 return float4(1,0,0,1);
