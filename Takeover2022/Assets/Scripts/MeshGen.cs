@@ -7,8 +7,8 @@ namespace MeshGen
     [RequireComponent(typeof(MeshFilter))]
     public class MeshGen : MonoBehaviour
     {
-        double NEG_X, NEG_Y = -1;
-        double POS_X, POS_Y = 1;
+        private double NEG_X, NEG_Y = -1;
+        private double POS_X, POS_Y = 1;
 
         static void Start()
         {
