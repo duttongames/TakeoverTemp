@@ -14,10 +14,18 @@ public class ObjectGenerator : MonoBehaviour
     private GameObject breakableDoor;
 
     [SerializeField]
+    private List<GameObject> chunks;
+
+    [SerializeField]
     private float spawnDistance;
     [SerializeField]
     private float spawnCooldown;
+    [SerializeField]
+    private float chunkSpawnCooldown;
     private bool firstSpawnCheck;
+    [SerializeField]
+    [Header("Out of 10")]
+    private int chunkChance;
 
     [SerializeField]
     [Header("This should always be at least 5 less than the spawn cooldown.")]
@@ -51,30 +59,52 @@ public class ObjectGenerator : MonoBehaviour
                     difficultyModifier = maxDifficultyModifier;
                 }
 
-                //Decide which obstacle to spawn.
-                int obstacleNumber = Random.Range(0, 2);
+                //Decide whether to spawn an obstacle or a chunk.
+                int spawnChunk = Random.Range(0, 11);
 
-                //Figure out where to spawn the obstacle.
-                Vector3 obstaclePosition = player.transform.position + player.transform.forward * spawnDistance;
-
-                //Spawn the obstacle
-
-                //Barrel
-                if (obstacleNumber == 0)
+                if (spawnChunk < chunkChance && chunks.Count > 0)
                 {
-                    obstaclePosition = new Vector3(obstaclePosition.x, -4.5f, -8.5f);
-                    Instantiate(barrel, obstaclePosition, Quaternion.identity);
+                    //Decide which chunk to spawn.
+                    int chunkNumber = Random.Range(0, 2);
+
+                    //Figure out where to spawn the chunk.
+                    Vector3 obstaclePosition = player.transform.position + player.transform.forward * spawnDistance;
+                    obstaclePosition = new Vector3(obstaclePosition.x, 0, -8.5f);
+
+                    //Spawn a random chunk.
+                    Instantiate(chunks[Random.Range(0, chunks.Count)], obstaclePosition, Quaternion.identity);
+
+                    //Set a timer to spawn another obstacle or chunk.
+                    yield return new WaitForSeconds(chunkSpawnCooldown - difficultyModifier - Random.Range(1, 4));
                 }
 
-                //Metal Door
                 else
                 {
-                    obstaclePosition = new Vector3(obstaclePosition.x, -4.5f, -8.5f);
-                    Instantiate(breakableDoor, obstaclePosition, Quaternion.identity);
-                }
+                    //Decide which obstacle to spawn.
+                    int obstacleNumber = Random.Range(0, 2);
 
-                //Set a timer to spawn another obstacle.
-                yield return new WaitForSeconds(spawnCooldown - difficultyModifier - Random.Range(1, 4));
+                    //Figure out where to spawn the obstacle.
+                    Vector3 obstaclePosition = player.transform.position + player.transform.forward * spawnDistance;
+
+                    //Spawn the obstacle
+
+                    //Barrel
+                    if (obstacleNumber == 0)
+                    {
+                        obstaclePosition = new Vector3(obstaclePosition.x, -3.2f, -8.5f);
+                        Instantiate(barrel, obstaclePosition, Quaternion.identity);
+                    }
+
+                    //Metal Door
+                    else
+                    {
+                        obstaclePosition = new Vector3(obstaclePosition.x, -3.2f, -8.5f);
+                        Instantiate(breakableDoor, obstaclePosition, Quaternion.identity);
+                    }
+
+                    //Set a timer to spawn another obstacle or chunk.
+                    yield return new WaitForSeconds(spawnCooldown - difficultyModifier - Random.Range(1, 4));
+                }
             }
 
             else
