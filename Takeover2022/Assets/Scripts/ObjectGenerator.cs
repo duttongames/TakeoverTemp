@@ -58,15 +58,18 @@ public class ObjectGenerator : MonoBehaviour
                 Vector3 obstaclePosition = player.transform.position + player.transform.forward * spawnDistance;
 
                 //Spawn the obstacle
+
+                //Barrel
                 if (obstacleNumber == 0)
                 {
-                    obstaclePosition = new Vector3(obstaclePosition.x, 1.38f, -8.5f);
+                    obstaclePosition = new Vector3(obstaclePosition.x, -4.5f, -8.5f);
                     Instantiate(barrel, obstaclePosition, Quaternion.identity);
                 }
 
+                //Metal Door
                 else
                 {
-                    obstaclePosition = new Vector3(obstaclePosition.x, 1.81f, -8.5f);
+                    obstaclePosition = new Vector3(obstaclePosition.x, -4.5f, -8.5f);
                     Instantiate(breakableDoor, obstaclePosition, Quaternion.identity);
                 }
 
