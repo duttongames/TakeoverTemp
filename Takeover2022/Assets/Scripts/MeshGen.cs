@@ -41,6 +41,21 @@ namespace MeshGen
                 3,1,2
             };
 
+            // ITERATION TO INITIALISE TRIANGULATION BETWEEN FACES
+
+            TRI[] = new int[]
+            {
+                for(int T = 0; T < 6)
+                {
+                    TRI = 0;
+                    TRI = 1 + X_SIZE + 1;
+                    TRI = 2;
+                    TRI = 3;
+                    TRI = 4 + X_SIZE + 1;
+                    TRI = 5 + X_SIZE + 2;
+                }
+            }
+
             // ITERATION BETWEEN X AND Z TO CREATE VERTICES
             for(int z = 0; z <= Z_SIZE; Z++)
             {
