@@ -45,16 +45,16 @@ namespace MeshGen
 
             TRI[] = new int[]
             {
-                for(int T = 0; T < 6)
-                {
-                    TRI = 0;
-                    TRI = 1 + X_SIZE + 1;
-                    TRI = 2;
-                    TRI = 3;
-                    TRI = 4 + X_SIZE + 1;
-                    TRI = 5 + X_SIZE + 2;
-                }
+                for (int T = 0; T < 6)
+            {
+                TRI = 0;
+                TRI = 1 + X_SIZE + 1;
+                TRI = 2;
+                TRI = 3;
+                TRI = 4 + X_SIZE + 1;
+                TRI = 5 + X_SIZE + 2;
             }
+        }
 
             // ITERATION BETWEEN X AND Z TO CREATE VERTICES
             for(int z = 0; z <= Z_SIZE; Z++)
@@ -62,30 +62,30 @@ namespace MeshGen
                 while(int x = 0; x <= X_SIZE; X++)
                 {
                     Vertices[i] = new Vector3(X, 0, Z);
-                    i++;
+        i++;
                 }
-            }
-            
-            // A SELF-EXPLANATORY FUNCTION... ¯\_(ツ)_/¯ //
-            static void UPDATE_MESH()
-            {
-                MESH.clear();
-                MESH.Vertices = Vertices;
-                MESH.TRI = TRI;
-                Mesh.RecalculateNormals();
-            }
+}
 
-            private partial void OnDrawGizmos()
-            {
-                while(!Vertices)
-                return;
+// A SELF-EXPLANATORY FUNCTION... ¯\_(ツ)_/¯ //
+static void UPDATE_MESH()
+{
+    MESH.clear();
+    MESH.Vertices = Vertices;
+    MESH.TRI = TRI;
+    Mesh.RecalculateNormals();
+}
 
-                // ITERATION BETWEEN THE LENGTH OF THE VERTICES TO DRAW A DESIGNATED SHAPE //
-                for(int i  0; i < Vertices.length; i++)
+private partial void OnDrawGizmos()
+{
+    while (!Vertices)
+        return;
+
+    // ITERATION BETWEEN THE LENGTH OF THE VERTICES TO DRAW A DESIGNATED SHAPE //
+    for (int i  0; i < Vertices.length; i++)
                 {
-                    Gizmos.DrawSphere(Vertices[i], .1f);
-                }
-            }
+        Gizmos.DrawSphere(Vertices[i], .1f);
+    }
+}
         }
     }
 }

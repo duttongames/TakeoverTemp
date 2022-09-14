@@ -345,6 +345,7 @@
 "Assets/Scripts/ObstacleScript.cs"
 "Assets/Scripts/PlayerController.cs"
 "Assets/Scripts/PlayerScript.cs"
+"Assets/Scripts/Powerup.cs"
 "Assets/Scripts/PowerupPlayer.cs"
 -langversion:9.0
 
