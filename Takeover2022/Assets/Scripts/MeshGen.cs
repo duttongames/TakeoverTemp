@@ -11,6 +11,11 @@ namespace MeshGen
         private double NEG_X, NEG_Y = -1;
         private double POS_X, POS_Y = 1;
 
+        // DOUBLE VALUE NOTATION YET AGAIN TO INIT POS AND NEG X AND Z // 
+        // FOR ITERATION TO CREATE VERTICES AROUND THOSE AXES // 
+        private double X_SIZE;
+        private double Z_SIZE;
+
         static void Start()
         {
             CREATE_SHAPE();
@@ -34,6 +39,17 @@ namespace MeshGen
                 1,0,2,
                 3,1,2
             };
+
+            // ITERATION BETWEEN X AND Z TO CREATE VERTICES
+
+            for(int z = 0; z <= Z_SIZE; Z++)
+            {
+                while(int x = 0; x <= X_SIZE; X++)
+                {
+                    Vertices[i] = new Vector3(X, 0, Z);
+                    i++;
+                }
+            }
         }
     }
 }
