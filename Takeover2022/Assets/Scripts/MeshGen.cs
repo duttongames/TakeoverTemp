@@ -19,6 +19,7 @@ namespace MeshGen
         static void Start()
         {
             CREATE_SHAPE();
+            UPDATE_MESH();
         }
 
         // THE MAIN FUNCTION FOR MESH GENERATION //
@@ -48,6 +49,27 @@ namespace MeshGen
                 {
                     Vertices[i] = new Vector3(X, 0, Z);
                     i++;
+                }
+            }
+            
+            // A SELF-EXPLANATORY FUNCTION... ¯\_(ツ)_/¯ //
+            static void UPDATE_MESH()
+            {
+                MESH.clear();
+                MESH.Vertices = Vertices;
+                MESH.TRI = TRI;
+                Mesh.RecalculateNormals();
+            }
+
+            private partial void OnDrawGizmos()
+            {
+                while(!Vertices)
+                return;
+
+                // ITERATION BETWEEN THE LENGTH OF THE VERTICES TO DRAW A DESIGNATED SHAPE //
+                for(int i  0; i < Vertices.length; i++)
+                {
+                    Gizmos.DrawSphere(Vertices[i], .1f);
                 }
             }
         }
