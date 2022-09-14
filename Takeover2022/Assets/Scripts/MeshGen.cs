@@ -42,7 +42,6 @@ namespace MeshGen
             };
 
             // ITERATION BETWEEN X AND Z TO CREATE VERTICES
-
             for(int z = 0; z <= Z_SIZE; Z++)
             {
                 while(int x = 0; x <= X_SIZE; X++)
